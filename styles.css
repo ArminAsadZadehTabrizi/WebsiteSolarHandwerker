@@ -180,26 +180,28 @@ ul {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
-    color: var(--color-white);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background: #0066cc;
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+    background: #0052a3;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
-    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
-    color: var(--color-white);
+    background: #0066cc;
+    color: #ffffff;
     width: 100%;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary:hover {
-    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+    background: #0052a3;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -563,12 +565,13 @@ ul {
     box-shadow: var(--shadow-md);
     transition: var(--transition-base);
     border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .reference-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
-    border-color: #2e7d32;
+    border-color: #0066cc;
 }
 
 .reference-card img {
@@ -605,6 +608,243 @@ ul {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-top: var(--spacing-sm);
+}
+
+/* ====================================
+   Process Section (Der Ablauf)
+   ==================================== */
+.process-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-light-gray);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    position: relative;
+    margin-top: var(--spacing-lg);
+}
+
+.process-step {
+    text-align: center;
+    padding: var(--spacing-md);
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
+    position: relative;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.process-step-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-sm);
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.process-step h3 {
+    font-size: 1.25rem;
+    color: var(--color-tech-blue);
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+.process-step p {
+    color: var(--color-medium-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Connecting line between steps */
+.process-grid::before {
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: linear-gradient(to right, #0066cc, #0066cc);
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.process-step {
+    z-index: 1;
+}
+
+/* ====================================
+   Project Details Modal
+   ==================================== */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.project-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.project-modal-content {
+    position: relative;
+    background: var(--color-white);
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10001;
+    animation: modalSlideIn 0.4s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.project-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-base);
+    z-index: 10002;
+    box-shadow: var(--shadow-md);
+}
+
+.project-modal-close:hover {
+    background: var(--color-white);
+    transform: rotate(90deg);
+}
+
+.project-modal-close svg {
+    color: var(--color-dark);
+}
+
+.project-modal-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background-color: var(--color-light-gray);
+}
+
+.project-modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-modal-body {
+    padding: var(--spacing-lg);
+}
+
+.project-modal-body h3 {
+    font-size: 2rem;
+    color: var(--color-tech-blue);
+    margin-bottom: var(--spacing-sm);
+    font-weight: var(--font-weight-bold);
+}
+
+.project-modal-description {
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.project-modal-details {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-lg);
+    border-left: 4px solid #0066cc;
+}
+
+.project-modal-details h4 {
+    font-size: 1.2rem;
+    color: var(--color-tech-blue);
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+.project-modal-details p {
+    color: var(--color-dark);
+    font-size: 1rem;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.project-modal-cta {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .project-modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .project-modal-image {
+        height: 250px;
+    }
+
+    .project-modal-body {
+        padding: var(--spacing-md);
+    }
+
+    .project-modal-body h3 {
+        font-size: 1.5rem;
+    }
 }
 
 /* ====================================
@@ -820,6 +1060,15 @@ ul {
         grid-template-columns: 1fr;
     }
 
+    /* Process */
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-grid::before {
+        display: none;
+    }
+
     /* About */
     .about-content {
         grid-template-columns: 1fr;
@@ -860,6 +1109,10 @@ ul {
     }
 
     .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
