@@ -270,6 +270,31 @@ document.addEventListener('DOMContentLoaded', function () {
             e.stopPropagation();
         });
     }
+
+    // Modal CTA: Close modal first, then smooth-scroll to contact section
+    const modalCta = document.getElementById('projectModalCta');
+    if (modalCta) {
+        modalCta.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            // Close the modal immediately
+            closeModal();
+
+            // Smooth-scroll to the contact section after modal closes
+            if (targetElement) {
+                setTimeout(() => {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 350);
+            }
+        });
+    }
 });
 
 

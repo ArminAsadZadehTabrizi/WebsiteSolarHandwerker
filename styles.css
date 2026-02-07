@@ -103,6 +103,12 @@ ul {
     padding: var(--spacing-sm) 0;
 }
 
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .logo h1 {
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
@@ -131,6 +137,38 @@ ul {
 
 .nav a:hover {
     color: var(--color-tech-blue);
+}
+
+/* Ensure .btn-primary text stays white inside .nav */
+.nav a.btn-primary {
+    color: #ffffff;
+}
+
+.nav a.btn-primary:hover {
+    color: #ffffff;
+}
+
+/* WhatsApp Header Link */
+.header-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #25D366 !important;
+    font-weight: var(--font-weight-medium);
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    border: 2px solid #25D366;
+    transition: var(--transition-base);
+}
+
+.header-whatsapp:hover {
+    background-color: #25D366;
+    color: #ffffff !important;
+}
+
+.header-whatsapp svg {
+    flex-shrink: 0;
 }
 
 /* Mobile Menu Toggle */
@@ -1029,6 +1067,11 @@ ul {
 
     .nav .btn {
         width: 100%;
+    }
+
+    .nav .header-whatsapp {
+        width: 100%;
+        justify-content: center;
     }
 
     /* Hero */
